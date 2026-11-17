@@ -138,6 +138,15 @@ Questions qui reviennent souvent, à préparer :
 3. Si le résultat est bon, le marquer : `git tag session-01-fin`. Garder une capture du PNG obtenu.
 4. Revenir à l'état initial : `git switch dev`.
 
+## Retours de la répétition technique (17/11/2026)
+
+- **Scène trouvée** : `S2B_31UCP_20250701_0_L2A`, du 1er juillet 2025, **0 % de nuages**. La zone et la date sont validées.
+- **Durée d'exécution** : environ **30 s** (téléchargement de 4 bandes). Profiter de ce temps pour commenter ce que Claude vient d'écrire.
+- **Résultat** : parcelles moissonnées en orange, cultures d'été en vert foncé, villages en rouge. Très parlant pour un public d'observation de la Terre.
+- **Piège n° 1, la vue en couleurs naturelles trop sombre** : un étirement fixe (division par 0,3) donne une image brun foncé. L'étirement par percentiles 2–98 corrige le problème. Si Claude tombe dans ce piège en direct, c'est un **excellent prompt d'itération** : « L'image en couleurs naturelles est trop sombre, améliore le contraste. »
+- **Piège n° 2, le décalage radiométrique** : depuis 2022, les produits L2A ont un décalage de −0,1 sur la réflectance. Earth Search le documente dans les métadonnées STAC (`raster:bands`). Si Claude l'ignore, le NDVI est légèrement faux, mais l'image reste jolie. C'est **le teaser parfait pour la séance 2** : « Le résultat a l'air juste… mais l'est-il ? »
+- **Référence** : le code obtenu est sur le tag `session-01-fin` (`ndvi.py` et `ndvi.png`).
+
 ## Plan B
 
 | Problème | Réaction |
